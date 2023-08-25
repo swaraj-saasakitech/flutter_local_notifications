@@ -33,6 +33,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
@@ -262,12 +263,17 @@ public class FlutterLocalNotificationsPlugin
         PendingIntent.getActivity(context, notificationDetails.id, intent, flags);
     DefaultStyleInformation defaultStyleInformation =
         (DefaultStyleInformation) notificationDetails.styleInformation;
+
+    RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.custom_notification_layout);
+    remoteViews.setTextViewText(R.id.notification_title, notificationDetails.title);
     NotificationCompat.Builder builder =
         new NotificationCompat.Builder(context, notificationDetails.channelId)
-            .setContentTitle(
-                defaultStyleInformation.htmlFormatTitle
-                    ? fromHtml(notificationDetails.title)
-                    : notificationDetails.title)
+                .setCustomContentView(remoteViews)
+                .setCustomHeadsUpContentView(remoteViews)
+//            .setContentTitle(
+//                defaultStyleInformation.htmlFormatTitle
+//                    ? fromHtml(notificationDetails.title)
+//                    : notificationDetails.title)
             .setContentText(
                 defaultStyleInformation.htmlFormatBody
                     ? fromHtml(notificationDetails.body)
