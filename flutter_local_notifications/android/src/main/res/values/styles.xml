@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="NotificationTitle">
-        <item name="android:textSize">@android:dimen/notification_title_text_size</item>
+        <item name="android:textSize">@dimen/notification_title_text_size</item>
         <item name="android:textColor">@color/default_notification_title_color_material</item>
     </style>
     <style name="NotificationText">
-        <item name="android:textSize">@android:dimen/notification_text_size</item>
+        <item name="android:textSize">@dimen/notification_text_size</item>
         <item name="android:textColor">@color/default_notification_secondary_text_color_material</item>
     </style>
+    <style name="NotificationTime">
+        <item name="android:textSize">@dimen/notification_time_text_size</item>
+        <item name="android:textColor">@color/default_notification_secondary_text_color_material</item>
+    </style>
+
 </resources>
