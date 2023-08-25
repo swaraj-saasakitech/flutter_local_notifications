@@ -266,6 +266,8 @@ public class FlutterLocalNotificationsPlugin
 
     RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.custom_notification_layout);
     remoteViews.setTextViewText(R.id.notification_title, notificationDetails.title);
+    remoteViews.setTextViewText(R.id.notification_text, notificationDetails.body);
+    remoteViews.setImageViewBitmap(R.id.notification_image,getBitmapFromSource(context,notificationDetails.largeIcon,notificationDetails.largeIconBitmapSource));
     NotificationCompat.Builder builder =
         new NotificationCompat.Builder(context, notificationDetails.channelId)
                 .setCustomContentView(remoteViews)
