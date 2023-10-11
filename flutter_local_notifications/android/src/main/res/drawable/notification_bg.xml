@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <solid android:color="@android:color/transparent" />-->
+    <gradient
+        android:startColor="#00000000"
+        android:endColor="#80000000"
+        android:angle="270" />
+    <corners android:radius="16dp" /> <!-- Adjust the corner radius as needed -->
+</shape>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    &lt;!&ndash; Rounded background &ndash;&gt;-->
+<!--    <item>-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <solid android:color="@android:color/transparent" /> &lt;!&ndash; Transparent background &ndash;&gt;-->
+<!--            <corners android:radius="16dp" /> &lt;!&ndash; Adjust the corner radius as needed &ndash;&gt;-->
+<!--        </shape>-->
+<!--    </item>-->
+
+<!--    &lt;!&ndash; Gradient overlay at the bottom &ndash;&gt;-->
+<!--    <item>-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <gradient-->
+<!--                android:startColor="#00000000"-->
+<!--            android:endColor="#80000000"-->
+<!--            android:angle="270" />-->
+<!--        </shape>-->
+<!--    </item>-->
+<!--</layer-list>-->

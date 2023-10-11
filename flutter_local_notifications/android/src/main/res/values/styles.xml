@@ -12,5 +12,11 @@
         <item name="android:textSize">@dimen/notification_time_text_size</item>
         <item name="android:textColor">@color/default_notification_secondary_text_color_material</item>
     </style>
+    <style name="NotificationExpandedTitle">
+        <item name="android:textSize">@dimen/notification_title_text_size</item>
+        <item name="android:textColor">#ffffff</item>
+
+
+    </style>
 
 </resources>

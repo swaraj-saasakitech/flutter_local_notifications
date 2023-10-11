@@ -33,6 +33,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.util.TypedValue;
 import android.widget.RemoteViews;
 
 import androidx.annotation.Keep;
@@ -266,12 +267,23 @@ public class FlutterLocalNotificationsPlugin
 
     RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.custom_notification_layout);
     remoteViews.setTextViewText(R.id.notification_title, notificationDetails.title);
-    remoteViews.setTextViewText(R.id.notification_text, notificationDetails.body);
-    remoteViews.setImageViewBitmap(R.id.notification_image,getBitmapFromSource(context,notificationDetails.largeIcon,notificationDetails.largeIconBitmapSource));
+    RemoteViews remoteViewsBig = new RemoteViews(context.getPackageName(), R.layout.custom_notification_layout_big);
+    remoteViewsBig.setTextViewText(R.id.notification_title, notificationDetails.title);
+    if(notificationDetails.title.length()>50){
+      remoteViewsBig.setTextViewTextSize(R.id.notification_title, TypedValue.COMPLEX_UNIT_SP,14);
+      remoteViews.setTextViewTextSize(R.id.notification_title, TypedValue.COMPLEX_UNIT_SP,14);
+
+    }
+    Log.d(TAG, "createNotification: "+notificationDetails.largeIcon);
+    remoteViewsBig.setImageViewBitmap(R.id.news_image,getBitmapFromSource(
+            context, notificationDetails.largeIcon, notificationDetails.largeIconBitmapSource));
+//    remoteViews.setTextViewText(R.id.notification_text, notificationDetails.body);
+//    remoteViews.setImageViewBitmap(R.id.notification_image,getBitmapFromSource(context,notificationDetails.largeIcon,notificationDetails.largeIconBitmapSource));
     NotificationCompat.Builder builder =
         new NotificationCompat.Builder(context, notificationDetails.channelId)
                 .setCustomContentView(remoteViews)
                 .setCustomHeadsUpContentView(remoteViews)
+                .setCustomBigContentView(remoteViewsBig)
 //            .setContentTitle(
 //                defaultStyleInformation.htmlFormatTitle
 //                    ? fromHtml(notificationDetails.title)
@@ -369,9 +381,9 @@ public class FlutterLocalNotificationsPlugin
     }
 
     setSmallIcon(context, notificationDetails, builder);
-    builder.setLargeIcon(
-        getBitmapFromSource(
-            context, notificationDetails.largeIcon, notificationDetails.largeIconBitmapSource));
+//    builder.setLargeIcon(
+//        getBitmapFromSource(
+//            context, notificationDetails.largeIcon, notificationDetails.largeIconBitmapSource));
     if (notificationDetails.color != null) {
       builder.setColor(notificationDetails.color.intValue());
     }
