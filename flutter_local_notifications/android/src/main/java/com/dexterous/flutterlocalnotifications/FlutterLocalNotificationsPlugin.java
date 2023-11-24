@@ -275,8 +275,12 @@ public class FlutterLocalNotificationsPlugin
 
     }
     Log.d(TAG, "createNotification: "+notificationDetails.largeIcon);
-    remoteViewsBig.setImageViewBitmap(R.id.news_image,getBitmapFromSource(
-            context, notificationDetails.largeIcon, notificationDetails.largeIconBitmapSource));
+    Bitmap bitmap = getBitmapFromSource(context, notificationDetails.largeIcon, notificationDetails.largeIconBitmapSource);
+    if(bitmap!=null){
+      remoteViewsBig.setImageViewBitmap(R.id.news_image, bitmap);
+    }
+//    remoteViewsBig.setImageViewBitmap(R.id.news_image,getBitmapFromSource(
+//            context, notificationDetails.largeIcon, notificationDetails.largeIconBitmapSource));
 //    remoteViews.setTextViewText(R.id.notification_text, notificationDetails.body);
 //    remoteViews.setImageViewBitmap(R.id.notification_image,getBitmapFromSource(context,notificationDetails.largeIcon,notificationDetails.largeIconBitmapSource));
     NotificationCompat.Builder builder =
