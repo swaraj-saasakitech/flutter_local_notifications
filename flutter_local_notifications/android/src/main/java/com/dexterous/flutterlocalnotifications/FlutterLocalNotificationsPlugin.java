@@ -286,6 +286,7 @@ public class FlutterLocalNotificationsPlugin
             remoteViewsBig.setTextViewText(R.id.notification_time,getCurrentTimeStamp());
             remoteViews.setTextViewText(R.id.notification_time,getCurrentTimeStamp());
         }
+
         remoteViewsBig.setTextViewText(R.id.notification_title, notificationDetails.title);
         if (notificationDetails.title.length() > 50) {
             remoteViewsBig.setTextViewTextSize(R.id.notification_title, TypedValue.COMPLEX_UNIT_SP, 14);
@@ -300,6 +301,10 @@ public class FlutterLocalNotificationsPlugin
                     bigPictureStyleInformation.bigPicture,
                     bigPictureStyleInformation.bigPictureBitmapSource);
             remoteViewsBig.setImageViewBitmap(R.id.news_image, bitmap);
+
+            if(VERSION.SDK_INT >VERSION_CODES.Q){
+                remoteViews.setImageViewBitmap(R.id.smallIcon,bitmap);
+            }
         }
 
 
